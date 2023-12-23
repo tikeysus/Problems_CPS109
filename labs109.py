@@ -36,7 +36,37 @@ def only_odd_digits(n):
     elif n % 2 == 1:
         return only_odd_digits(n // 10)
     
+def domino_cycle(tiles):
+    if not tiles:
+        return True 
+    for i in range(len(tiles) - 1):
+        if tiles[i][1] != tiles[i + 1][0]:
+            return False  
+    return tiles[0][0] == tiles[-1][1] 
 
+def is_cyclops(n):
+    n = str(n)
+    if len(n) % 2 == 0: 
+        return False 
+    for i in range(len(n) // 2):
+        if n[i] == '0':
+            return False
+        continue 
+    for j in range(len(n) // 2 + 1, len(n)):
+        if n[j] == '0':
+            return False 
+    return n[len(n) // 2] == '0' 
 
-
-
+def riffle(items, out = True):
+    if not items:
+        return []
+    empty = [] 
+    if out:
+        for i in range(len(items) // 2):
+            empty.append(items[:len(items) // 2][i])
+            empty.append(items[len(items) // 2:][i])
+    elif not out:
+        for i in range(len(items) // 2):    
+            empty.append(items[len(items) // 2:][i])
+            empty.append(items[:len(items) // 2][i])
+    return empty 
