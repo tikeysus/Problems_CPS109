@@ -70,3 +70,19 @@ def riffle(items, out = True):
             empty.append(items[len(items) // 2:][i])
             empty.append(items[:len(items) // 2][i])
     return empty 
+#Work on improving this, this code is very lazy (not in a good way lol).
+
+def colour_trio(colours):
+    colour_archive = {'rr': 'r', 'bb': 'b', 'yy': 'y', 
+                      'ry': 'b', 'rb': 'y',
+                      'br': 'y', 'by': 'r',
+                      'yr': 'b', 'yb': 'r'} 
+    colour_list = list(colours)
+    if len(colour_list) == 1:
+        return colour_list[0]
+    for i in range(len(colour_list) - 1):
+        colour_list[i] = colour_archive[colour_list[i] + colour_list[i + 1]]
+    colour_list.pop()
+
+    return colour_trio(colour_list)
+
