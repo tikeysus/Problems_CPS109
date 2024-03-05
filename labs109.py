@@ -86,29 +86,28 @@ def colour_trio(colours):
 
     return colour_trio(colour_list)
 
-
 def extract_increasing(nums):
+    if len(nums) == 0:
+        return [] 
+    
     big = int(nums[0])
     empty = [int(nums[0])]
-    length = 1
 
     start = 1
     end = 2
 
-    while length < len(nums):
+    while end < len(nums):
 
         if big < int(nums[start:end]):
             big = int(nums[start:end])
             empty.append(big)
-            length += len(nums[start:end])
-            start += 1
+            start = end
             end += 1
         
         else:
             end += 1
-            length += 1
     
-    if len(nums[start + 1:end]) > 0 and big < int(nums[start + 1:end]):
+    if len(nums[start:end]) > 0 and big < int(nums[start:end]):
         empty.append(int(nums[start:end]))
 
     return empty 
