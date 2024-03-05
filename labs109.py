@@ -111,3 +111,5 @@ def extract_increasing(nums):
         empty.append(int(nums[start:end]))
 
     return empty 
+
+
