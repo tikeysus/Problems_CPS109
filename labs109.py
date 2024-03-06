@@ -112,4 +112,24 @@ def extract_increasing(nums):
 
     return empty 
 
+def count_dominators(items):
+	if not items:
+		return 0 
+	
+	elif len(items) == 1:
+		return 1
 
+	items = items[::-1]
+	biggest = items[0]
+	count = 1
+	
+	i = 0
+	while i < len(items) - 1:
+		if items[i] < items[i + 1] and items[i + 1] > biggest:
+			biggest = items[i + 1]
+			count += 1
+			i += 1
+		else:
+			i += 1
+
+	return count 
