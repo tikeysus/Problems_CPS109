@@ -133,3 +133,47 @@ def count_dominators(items):
 			i += 1
 
 	return count 
+
+def taxi_zum_zum(moves):
+    position = [0,0]
+    
+    direction = "forward"
+    
+    for letter in moves:
+        if direction == "forward":
+            if letter == 'R':
+                direction = "right"
+            elif letter == 'L':
+                direction = "left"
+            elif letter == 'F':
+                position[1] += 1
+                direction = "forward"
+
+        elif direction == "left":
+            if letter == 'R':
+                direction = "forward"
+            elif letter == 'L':
+                direction = "back"
+            elif letter == 'F':
+                position[0] -= 1
+                direction = "left"
+        
+        elif direction == "right":
+            if letter == 'R':
+                direction = "back"
+            elif letter == 'L':
+                direction = "forward"
+            elif letter == 'F':
+                position[0] += 1
+                direction = "right"
+
+        elif direction == "back":
+            if letter == 'R':
+                direction = "left"
+            elif letter == 'L':
+                direction = "right"
+            elif letter == 'F':
+                position[1] -= 1
+                direction = "back"
+
+    return tuple(position)
