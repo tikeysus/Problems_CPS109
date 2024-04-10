@@ -177,3 +177,12 @@ def taxi_zum_zum(moves):
                 direction = "back"
 
     return tuple(position)
+
+def count_growlers(animals):
+    growl_count = 0
+    for i in range(len(animals)):
+        if ((animals[i] == "tac" or animals[i] == "god") and (animals[i + 1:].count("dog") + animals[i + 1:].count("god") > animals[i + 1:].count("cat") + animals[i + 1:].count("tac"))):
+            growl_count += 1
+        if ((animals[i] == "cat" or animals[i] == "dog") and (animals[:i].count("dog") + animals[:i].count("god") > animals[:i].count("cat") + animals[:i].count("tac"))):
+            growl_count += 1
+    return growl_count
