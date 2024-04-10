@@ -186,3 +186,21 @@ def count_growlers(animals):
         if ((animals[i] == "cat" or animals[i] == "dog") and (animals[:i].count("dog") + animals[:i].count("god") > animals[:i].count("cat") + animals[:i].count("tac"))):
             growl_count += 1
     return growl_count
+
+def words_with_given_shape(words, shape):
+	array = [] 
+	answer = [] 
+	for word in words:
+		for i in range(len(word) - 1):
+			if (ord(word[i]) < ord(word[i + 1])):
+				array.append(1)
+			elif (ord(word[i]) > ord(word[i + 1])):
+				array.append(-1)
+			elif (ord(word[i]) == ord(word[i + 1])):
+				array.append(0)
+		if (array == shape):
+			answer.append(word)
+		array = [] 
+	return answer
+
+
