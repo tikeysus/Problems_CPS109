@@ -203,4 +203,35 @@ def words_with_given_shape(words, shape):
 		array = [] 
 	return answer
 
+def give_change(amount, coins):
+	i = 0
+	array = [] 
+	while (i < len(coins)):
+		if (coins[i] <= amount):
+			array.append(coins[i])
+			amount -= coins[i]
+		else:
+			i += 1
+	return array 
 
+
+def winning_card(cards, trump=None):
+	if not cards:
+		return ()
+	max = tuple(cards[0])
+	first_suit = cards[0][1]
+	trump_exists = False
+	card_mappings = {"two" : 2, "three" : 3, "four" : 4, "five" : 5,
+	"six" : 6, "seven" : 7, "eight" : 8, "nine" : 9, "ten" : 10,
+	"jack" : 11, "queen" : 12, "king" : 13, "ace" : 14}
+	for card in cards:
+		if not trump_exists and card_mappings[card[0]] > card_mappings[max[0]] and card[1] == first_suit:
+			max = card 
+		if trump_exists and card[1] != trump:
+			continue
+		elif not trump_exists and card[1] == trump:
+			trump_exists = True
+			max = card
+		elif trump_exists and card[1] == trump and card_mappings[card[0]] > card_mappings[max[0]]:
+			max = card 
+	return max
